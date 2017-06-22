@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="l6.cb.com.l6fragments.MainActivity">
+    <!--
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <include
+
+            layout="@layout/fragment_blue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <include
+
+            layout="@layout/fragment_red"/>
+
+        </LinearLayout>
+
+    -->
+
+
+
+    <!--tools:layout is used just for our preview it has nothing to go with -->
+    <fragment
+        android:id="@+id/blueFragment"
+        android:name="l6.cb.com.l6fragments.BlueFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_blue"
+        ></fragment>
+
+
+    <fragment
+        android:id="@+id/redFragment"
+        android:name="l6.cb.com.l6fragments.RedFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:layout="@layout/fragment_red"
+        android:layout_weight="1">
+</fragment>
+
+    </LinearLayout>

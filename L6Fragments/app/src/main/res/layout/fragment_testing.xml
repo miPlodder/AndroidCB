@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4">
+
+
+    <!--tool:layout is just used for preview purposes-->
+    <fragment
+        android:id="@+id/fragOne"
+        android:name="l6.cb.com.l6fragments.BlueFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_blue"
+        android:layout_weight="2"
+        ></fragment>
+
+
+    <!--every fragment must have a android:name,
+    using which OS at runtime runs that file-->
+    <fragment
+        android:id="@+id/redFragment"
+        android:name="l6.cb.com.l6fragments.RedFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_red"
+        android:layout_weight="1">
+
+    </fragment>
+
+
+
+</LinearLayout>
