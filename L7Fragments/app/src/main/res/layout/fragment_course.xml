@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="l6.cb.com.l7fragments.CourseFragment">
+
+    <TextView
+        android:id="@+id/tvCourse"
+        android:textAllCaps="true"
+        android:textSize="30dp"
+        android:fontFamily="monospace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course"/>
+
+    <TextView
+        android:id="@+id/tvTeacher"
+        android:text="Teacher"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:text="Language"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:text="Add"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
