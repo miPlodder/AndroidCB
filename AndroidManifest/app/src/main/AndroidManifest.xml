@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="l6.cb.com.androidmanifest">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,15 +15,12 @@
         <!-- Intent-Filters should be set up differently or in same Intent-Filter -->
 
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -42,15 +41,22 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-
             </intent-filter>
         </activity>
         <activity android:name=".Main4Activity">
             <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-            <data android:mimeType="application/pdf"/>
+
+                <data android:mimeType="application/pdf" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".BrowserActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
