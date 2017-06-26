@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,25 +25,28 @@ import java.net.URL;
 public class DownloadTask extends AsyncTask<String, Void, String> {
 
     TextView tv;
-    public static final String TAG = "DownloadTask" ;
+    public static final String TAG = "DownloadTask";
 
     public DownloadTask(TextView tv) {
         this.tv = tv;
     }
-    protected String checkURL(String url){
+
+    protected String checkURL(String url) {
 
         String rv = "";
 
-        if(url.substring(0,7).equals("http://")){
-            //correct url
-            return url;
-        }else if(url.substring(0,8).equals("https://")){
-            //correct
-            return url;
-        }else{
+        if (url.length() > 7) {
+            if (url.substring(0, 7).equals("http://")) {
+                //correct url
+                return url;
+            } else if (url.substring(0, 8).equals("https://")) {
+                //correct
+                return url;
+            } else {
 
-            rv = "https://"+url ;
+                rv = "https://" + url;
 
+            }
         }
 
         return rv;
@@ -58,7 +63,7 @@ public class DownloadTask extends AsyncTask<String, Void, String> {
             url = new URL(checkURL(strings[0]));
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            Log.d(TAG, "doInBackground: "+e.getMessage());
+            Log.d(TAG, "doInBackground: " + e.getMessage());
         }
 
         //try https connection
@@ -80,7 +85,7 @@ public class DownloadTask extends AsyncTask<String, Void, String> {
                 buffer = br.readLine();
                 sb.append(buffer);
 
-                Log.d(TAG, "doInBackground: buffer = "+buffer);
+                Log.d(TAG, "doInBackground: buffer = " + buffer);
             } while (buffer != null);
 
 
@@ -88,24 +93,53 @@ public class DownloadTask extends AsyncTask<String, Void, String> {
 
         } catch (IOException e) {
             e.printStackTrace();
+            Log.d(TAG, "doInBackground: "+e.getMessage());
         }
 
 
-        String title = "";
+        String rv = "";
 
 
-            //Document doc = Jsoup.connect("http://www.example.com").get();
-            Document doc = Jsoup.parse(result);
-            title = doc.title();
+        //Document doc = Jsoup.connect("http://www.example.com").get();
+        Document doc = Jsoup.parse(result);
+        Elements links = doc.select("a");
 
-        return title;
+        /*
+        //grtting the href tag
+        StringBuffer sbuffer = new StringBuffer();
+        for (Element e : links) {
+
+            sbuffer.append(e.attr("abs:href") + "\n");
+        }
+
+
+        rv = sbuffer.toString();
+
+        return rv;*/
+
+        /*rv = doc.title()*/
+
+        /*getting the img src from the html page source code*/
+
+        Elements images = doc.getElementsByTag("img");
+        StringBuffer mySb = new StringBuffer();
+        for(Element image : images){
+
+            mySb.append(image);
+            //Log.d(TAG, "doInBackground: "+image);
+
+
+        }
+
+        Log.d(TAG, "doInBackground: "+mySb.toString());
+        return mySb.toString();
+
     }
 
     @Override
     protected void onPostExecute(String s) {
 
-
-
+        Log.d(TAG, "onPostExecute: "+s+"here");
         tv.setText(s);
         super.onPostExecute(s);
     }
