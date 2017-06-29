@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="l10.cb.com.l11restapicompleteapp.activities.MainActivity">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/tvUser"
+            android:text="Users"
+            android:textSize="30dp"
+            android:background="@color/red"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvPost"
+            android:text="Posts"
+            android:textSize="30dp"
+            android:layout_width="0dp"
+            android:background="@color/grey"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/tvAlbum"
+            android:text="Albums"
+            android:layout_weight="1"
+            android:textSize="30dp"
+            android:background="@color/pink"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvTodo"
+            android:text="Todos"
+            android:textSize="30dp"
+            android:background="@color/brown"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>
