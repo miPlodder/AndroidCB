@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import l10.cb.com.l11restapicompleteapp.R;
+import l10.cb.com.l11restapicompleteapp.api.SingeltonAPIClass;
 import l10.cb.com.l11restapicompleteapp.api.TodoAPI;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "onCreate: ");
         //initialise the views
         this.initialiser();
+
+        SingeltonAPIClass singeltonAPIClass = SingeltonAPIClass.createInstance();
+
       
     }
 

@@ -2,7 +2,6 @@
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -19,10 +18,9 @@
             android:id="@+id/cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="#ffff22"
             android:checked="true"
-            android:visibility="visible"
-            tools:text="try this" />
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -34,4 +32,5 @@
 
 
     </LinearLayout>
+
 </android.support.v7.widget.CardView>

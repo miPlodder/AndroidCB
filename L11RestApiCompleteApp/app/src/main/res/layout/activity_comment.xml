@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="l10.cb.com.l11restapicompleteapp.activities.AlbumActivity">
+    tools:context="l10.cb.com.l11restapicompleteapp.activities.CommentActivity">
+
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvAlbum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
+        android:id="@+id/rvComment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

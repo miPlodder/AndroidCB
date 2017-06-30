@@ -17,8 +17,4 @@ public interface UserAPI {
     @GET("/users")
     Call<ArrayList<UserPOJO>> getUsers();
 
-
-
-
-
 }

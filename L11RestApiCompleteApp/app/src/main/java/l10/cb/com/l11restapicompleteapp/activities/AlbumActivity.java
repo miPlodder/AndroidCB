@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import l10.cb.com.l11restapicompleteapp.R;
 import l10.cb.com.l11restapicompleteapp.adapters.AlbumAdapter;
 import l10.cb.com.l11restapicompleteapp.api.AlbumAPI;
+import l10.cb.com.l11restapicompleteapp.api.SingeltonAPIClass;
 import l10.cb.com.l11restapicompleteapp.models.AlbumPOJO;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,12 +35,10 @@ public class AlbumActivity extends AppCompatActivity {
         rvAlbum.setLayoutManager(new LinearLayoutManager(this));
         rvAlbum.setAdapter(albumAdapter);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://jsonplaceholder.typicode.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        //using singelton method to create only one RetroFit instance
 
-        AlbumAPI albumAPI = retrofit.create(AlbumAPI.class);
+        SingeltonAPIClass singeltonAPIClass = SingeltonAPIClass.createInstance();
+        AlbumAPI albumAPI = singeltonAPIClass.getAlbumAPI();
 
         albumAPI.getAlbums().enqueue(new Callback<ArrayList<AlbumPOJO>>() {
             @Override

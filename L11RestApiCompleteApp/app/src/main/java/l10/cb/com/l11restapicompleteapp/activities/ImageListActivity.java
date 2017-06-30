@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import l10.cb.com.l11restapicompleteapp.R;
 import l10.cb.com.l11restapicompleteapp.adapters.ImageListAdapter;
 import l10.cb.com.l11restapicompleteapp.api.ImageListAPI;
+import l10.cb.com.l11restapicompleteapp.api.SingeltonAPIClass;
 import l10.cb.com.l11restapicompleteapp.models.ImageListPOJO;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,12 +44,17 @@ public class ImageListActivity extends AppCompatActivity {
         rvImageList.setAdapter(imageListAdapter);
 
         //now using retrofit to fetch data from the internet
-        Retrofit retrofit = new Retrofit.Builder()
+        /*Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         ImageListAPI imageListAPI = retrofit.create(ImageListAPI.class);
+        */
+
+        //instead of above approach we use, singelton class
+        SingeltonAPIClass singeltonAPIClass = SingeltonAPIClass.createInstance();
+        ImageListAPI imageListAPI = singeltonAPIClass.getImageListAPI();
 
         imageListAPI.getImageListById(albumId).enqueue(new Callback<ArrayList<ImageListPOJO>>() {
             @Override
