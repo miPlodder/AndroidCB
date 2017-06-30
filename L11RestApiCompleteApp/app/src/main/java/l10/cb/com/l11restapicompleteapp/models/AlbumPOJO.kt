@@ -6,11 +6,7 @@ package l10.cb.com.l11restapicompleteapp.models
 
 data class AlbumPOJO(
 
-        val albumId : Int,
+        val userId : Int,
         val id : Int,
-        val title : String,
-        val url : String,
-        val thumbnailUrl : String
-
-
+        val title : String
 )

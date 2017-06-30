@@ -21,7 +21,9 @@
         <activity android:name=".activities.UserActivity" />
         <activity android:name=".activities.PostActivity" />
         <activity android:name=".activities.TodoActivity" />
-        <activity android:name=".activities.AlbumActivity"></activity>
+        <activity android:name=".activities.AlbumActivity" />
+        <activity android:name=".activities.ImageListActivity" />
+        <activity android:name=".activities.PhotoActivity"></activity>
     </application>
 
 </manifest>

@@ -1,20 +1,17 @@
 package l10.cb.com.l11restapicompleteapp.adapters;
 
 import android.content.Context;
-import android.provider.ContactsContract;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 import l10.cb.com.l11restapicompleteapp.R;
+import l10.cb.com.l11restapicompleteapp.activities.ImageListActivity;
 import l10.cb.com.l11restapicompleteapp.models.AlbumPOJO;
 
 /**
@@ -48,10 +45,22 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     }
 
     @Override
-    public void onBindViewHolder(AlbumViewHolder holder, int position) {
+    public void onBindViewHolder(AlbumViewHolder holder, final int position) {
 
         holder.tvTitle.setText(this.albums.get(position).getTitle());
-        Picasso.with(context).load(this.albums.get(position).getThumbnailUrl()).into(holder.ivThumbnail);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context, ImageListActivity.class);
+     /*           i.putExtra("title",albums.get(position).getTitle());*/
+                  i.putExtra("albumId",albums.get(position).getId());
+                context.startActivity(i);
+
+
+            }
+        });
 
     }
 
@@ -62,13 +71,13 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
 
     class AlbumViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView ivThumbnail;
         TextView tvTitle;
+        View itemView;
 
         public AlbumViewHolder(View itemView) {
             super(itemView);
 
-            ivThumbnail = (ImageView)itemView.findViewById(R.id.ivThumbnail);
+            this.itemView = itemView;
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
 
         }
