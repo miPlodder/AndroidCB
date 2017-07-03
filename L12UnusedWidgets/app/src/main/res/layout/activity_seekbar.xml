@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:wave="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="l12.cb.com.l12unusedwidgets.activities.SeekbarActivity">
+
+    <TextView
+        android:id="@+id/tvDisplayVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+    />
+
+    <SeekBar
+        android:id="@+id/sbVolume"
+        android:max="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="200dp"/>
+
+    <!--adding waveview for seekbar for improving the UI-->
+
+    <com.john.waveview.WaveView
+        android:id="@+id/wave_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fddddd"
+        wave:above_wave_color="#002f10"
+        wave:blow_wave_color="@android:color/white"
+        wave:progress="80"
+        wave:wave_height="little"
+        wave:wave_hz="normal"
+        wave:wave_length="middle" />
+
+    <!--Not much of a difference in between the below 3 textviews-->
+    <!--<AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AutoCompleteTextView" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="MultiAutoCompleteTextView" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name" />
+-->
+
+</LinearLayout>

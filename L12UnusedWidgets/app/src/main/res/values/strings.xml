@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">L12UnusedWidgets</string>
+    <string-array name="country_name">
+
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>Australia</item>
+        <item>US</item>
+        <item>UK</item>
+        <item>Russia</item>
+
+    </string-array>
+</resources>
