@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="l11.cb.com.l11picassogridlayout.FullscreenActivity">
+
+   <!-- <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+-->
+        <ImageView
+            android:id="@+id/fbIv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"
+            android:textColor="#FFF" />
+
+       <!-- <TextView
+            android:text="HELLO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+-->
+   <!-- </LinearLayout>-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabUndo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_dialog_email" />
+
+</LinearLayout>

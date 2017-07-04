@@ -1,6 +1,7 @@
 package l11.cb.com.l11picassogridlayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,14 +47,25 @@ public class GridImageAdapter extends RecyclerView.Adapter<GridImageAdapter.Grid
     }
 
     @Override
-    public void onBindViewHolder(GridViewHolder holder, int position) {
+    public void onBindViewHolder(GridViewHolder holder, final int position) {
 
         Picasso.with(context).load(images.get(position).getUrl())
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher)
-                .resize(1000,200)
-                .rotate(90)
+      /*          .rotate(90)*/
                 .into(holder.iv);
+
+        holder.iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //send intent to another activity
+                Intent i = new Intent(context,FullscreenActivity.class);
+                i.putExtra("url",images.get(position).getUrl());
+                context.startActivity(i);
+
+            }
+        });
 
         Log.d(TAG, "onBindViewHolder: "+images);
 
