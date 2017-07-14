@@ -76,7 +76,7 @@ public class ProgressBarActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: EXITED");
     }
 
-    class ProgressTask extends AsyncTask<Void, Integer, String> {
+    /*class ProgressTask extends AsyncTask<Void, Integer, String> {
 
         @Override
         protected String doInBackground(Void... voids) {
@@ -108,7 +108,7 @@ public class ProgressBarActivity extends AppCompatActivity {
             Toast.makeText(ProgressBarActivity.this, s, Toast.LENGTH_SHORT).show();
         }
     }
-
+*/
 
 }
 

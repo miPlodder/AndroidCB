@@ -10,4 +10,5 @@ data class Post(
         val id : kotlin.Int,
         val title : String,
         val body : String
+
 )

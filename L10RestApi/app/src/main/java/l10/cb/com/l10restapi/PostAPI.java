@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -19,6 +20,29 @@ public interface PostAPI {
 
             @Path("id") int postId
 
+    );
+
+    @GET("/posts/")
+    Call<ArrayList<Post>> getPosts(
+
+    );
+
+    @GET("/users")
+    Call<ArrayList<UserDetail>> getUserDetails();
+
+
+    //not work as it will return JSONOBJECT
+    //whereas RETROFIT is used to get only JSONARRAY
+    @GET("/users/{id}")
+    Call<ArrayList<UserDetail>> getUserDetail(
+
+            @Path("id") int id
+
+    );
+
+    @GET("/posts/{id}")
+    Call<Post> getPost(
+            @Path("id") int postId
     );
 
 

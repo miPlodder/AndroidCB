@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.btn);
         tv = (TextView) findViewById(R.id.tv);
 
-        runOnUiThread(new Runnable() {
+       /* runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
                 Log.d(TAG, "run: inside main thread");
 
             }
-        });
+        });*/
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d(TAG, "onClick: ");
 
-                DownloadTask downloadTask = new DownloadTask(MainActivity.this,tv);
-                downloadTask.execute();
-                /*Handler handler = new Handler();
+                /*DownloadTask downloadTask = new DownloadTask(MainActivity.this,tv);
+                downloadTask.execute();*/
+                Handler handler = new Handler();
                 Runnable r = new Runnable() {
                     @Override
                     public void run() {
@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                         Log.d(TAG, "run: inside worker thread");
-                        while ((startTime + 5000) > System.currentTimeMillis()) {
+                        /*while ((startTime + 5000) > System.currentTimeMillis()) {
 
                             //do nothing
-                        }
+                        }*/
                         tv.setText("Text changed after 5 seconds");
                         Log.d(TAG, "run: outside worker thread");
 
@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
                 };
 
-                handler.post(r);
-*/
+                handler.postDelayed(r,10000);
             }
         });
 

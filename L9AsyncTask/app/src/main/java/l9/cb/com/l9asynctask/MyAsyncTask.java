@@ -6,9 +6,6 @@ import android.provider.Settings;
 import android.util.Log;
 import android.widget.TextView;
 
-/**
- * Created by ip510 feih on 26-06-2017.
- */
 
 public class MyAsyncTask extends AsyncTask<Integer, Float, String> {
 
@@ -22,6 +19,7 @@ public class MyAsyncTask extends AsyncTask<Integer, Float, String> {
     @Override
     protected void onPreExecute() {
 
+
         Log.d(TAG, "onPreExecute: ");
         tv.setText("WAIT START");
         super.onPreExecute();
@@ -33,6 +31,15 @@ public class MyAsyncTask extends AsyncTask<Integer, Float, String> {
     protected String doInBackground(Integer[] objects) {
 
         int upperCount = objects[0];
+
+/*
+        MainActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });*/
+
 
         Log.d(TAG, "doInBackground: ");
         for (int i = 0; (2 * upperCount) > i; i++) {
@@ -47,7 +54,7 @@ public class MyAsyncTask extends AsyncTask<Integer, Float, String> {
             }
 
 
-            publishProgress(((float)i)/2);
+            publishProgress(((float) i) / 2);
 
         }
 

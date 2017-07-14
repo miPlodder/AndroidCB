@@ -7,11 +7,22 @@
     android:orientation="vertical"
     tools:context="l10.cb.com.l10restapi.Main2Activity">
 
+    <Button
+        android:text="Touch Me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/tvPostId"
         android:text="Id here"
         android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    </ScrollView>
 
 </LinearLayout>

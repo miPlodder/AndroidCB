@@ -13,6 +13,7 @@ public class MyPowerReceiver extends BroadcastReceiver {
 
         if (intent.getAction().equals(Intent.ACTION_POWER_CONNECTED)) {
 
+            /*context.startActivity(new Intent(context,OnReceiveActivity.class));*/
             Toast.makeText(context, "POWER CONNECTED", Toast.LENGTH_SHORT).show();
 
         }

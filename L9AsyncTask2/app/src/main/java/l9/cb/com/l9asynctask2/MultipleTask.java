@@ -1,6 +1,7 @@
 package l9.cb.com.l9asynctask2;
 
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.TextView;
@@ -12,12 +13,12 @@ import android.widget.TextView;
 public class MultipleTask extends AsyncTask<Integer, Void, Integer> {
 
     TextView tv;
-    int counter ;
+    int counter;
     public static final String TAG = "MultipleTask";
 
     public MultipleTask(TextView tv) {
 
-        this.counter = 0 ;
+        this.counter = 0;
         this.tv = tv;
 
     }
@@ -32,9 +33,22 @@ public class MultipleTask extends AsyncTask<Integer, Void, Integer> {
         while ((startTime + waitTime) > System.currentTimeMillis()) {
 
 
-            publishProgress();
         }
 
+        Handler handler = new Handler();
+        //handler.getLooper();
+
+        //publishProgress();
+        Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+
+                tv.setText("FROM HANDLER");
+                Log.d(TAG, "run: ");
+            }
+        };
+
+        handler.post(runnable);
 
         return integers[0];
 
@@ -43,8 +57,9 @@ public class MultipleTask extends AsyncTask<Integer, Void, Integer> {
     @Override
     protected void onProgressUpdate(Void... values) {
 
-        tv.setText(counter+"");
-        counter++;
+       // tv.setText(counter + "");
+       // counter++;
+
         super.onProgressUpdate(values);
     }
 

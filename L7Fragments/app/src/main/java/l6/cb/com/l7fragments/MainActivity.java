@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 //Advanced Fragments are made here
 //using callbacks to access the Activity
-//sending data to the fragment using newInstance 
+//sending data to the fragment using newInstance
 public class MainActivity extends AppCompatActivity {
 
     Button btn1, btn2, btn3;

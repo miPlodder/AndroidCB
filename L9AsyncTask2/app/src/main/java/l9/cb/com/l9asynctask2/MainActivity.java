@@ -21,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
         tv1 = (TextView) findViewById(R.id.tv1);
         tv2 = (TextView) findViewById(R.id.tv2);
 
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG, "run1: ");
+            }
+        });
+
         ((Button)findViewById(R.id.btn1)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 MultipleTask multipleTask = new MultipleTask(tv1);
                 multipleTask.execute(5); //take 5s to execute the instruction
 
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "run2: ");
+                    }
+                });
 
             }
         });
@@ -37,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "run3: ");
+                    }
+                });
                 Log.d(TAG, "onClick: 10 seconds");
                 MultipleTask multipleTask = new MultipleTask(tv2);
                 multipleTask.execute(10);

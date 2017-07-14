@@ -20,20 +20,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         myReciever = new MyReciever();
         fl = (FrameLayout) findViewById(R.id.fl);
         ifilter = new IntentFilter();
         ifilter.addAction(Intent.ACTION_POWER_CONNECTED);
         ifilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
 
-
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(myReciever, ifilter);
 
+        registerReceiver(myReciever, ifilter);
     }
 
     @Override
@@ -60,10 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-
         }
 
     }
-
 
 }

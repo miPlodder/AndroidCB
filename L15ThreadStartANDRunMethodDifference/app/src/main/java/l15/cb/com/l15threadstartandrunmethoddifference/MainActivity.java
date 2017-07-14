@@ -1,5 +1,6 @@
 package l15.cb.com.l15threadstartandrunmethoddifference;
 
+import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Wait is over", Toast.LENGTH_SHORT).show();
                 t.start();
+
+            }
+        });
+
+        ((Button) findViewById(R.id.btn2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // startActivity(new Intent(MainActivity.this,SecondActivity.class));
 
             }
         });
