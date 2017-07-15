@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
@@ -36,7 +37,8 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
     Geocoder geocoder;
     GoogleMap map;
     String startLocation, endLocation;
-    Marker prevStartMarker, prevEndMarker;
+    static Marker prevStartMarker, prevEndMarker;
+    Boolean isInputEmpty = false;
 
     public FindLocationTask(Context context, EditText etLocation, EditText etEndLocation, Geocoder geocoder, GoogleMap map) {
 
@@ -70,10 +72,12 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
 
             rv.add(addressListStart.get(0));
             rv.add(addressListEnd.get(0));
+            Log.d(TAG, "doInBackground: SIZE " + rv.size());
 
 
         } catch (IOException e) {
 
+            isInputEmpty =true;
             Log.d(TAG, "doInBackground: CATCH " + e.getMessage());
         }
 
@@ -84,37 +88,50 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
     protected void onPostExecute(ArrayList<Address> addresses) {
         super.onPostExecute(addresses);
 
-        if (prevStartMarker != null || prevEndMarker != null) {
-
-            Log.d(TAG, "onPostExecute: areNotNullREMOVED");
-            prevStartMarker.remove();
-            prevEndMarker.remove();
-        }
         Log.d(TAG, "onPostExecute: After remove" + prevStartMarker + prevEndMarker);
         //animate is better than move camera as it moves from current location to the entered location
         //map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), 10));
-
-        Address startAdd = addresses.get(0);
-        Address endAdd = addresses.get(1);
-
-        LatLng startLL = new LatLng(startAdd.getLatitude()
-                , startAdd.getLongitude());
-
-        LatLng endLL = new LatLng(endAdd.getLatitude()
-                , endAdd.getLongitude());
+        
+        if (addresses.size() != 0) {
 
 
-        //zooming
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(startLL, 3));
-        prevStartMarker = map.addMarker(new MarkerOptions().
-                title(startAdd.getLocality()).
-                position(startLL));
+            if (prevStartMarker != null || prevEndMarker != null) {
 
-        prevEndMarker = map.addMarker(new MarkerOptions()
-                .title(endAdd.getLocality())
-                .position(endLL));
+                Log.d(TAG, "onPostExecute: areNotNullREMOVED");
+                prevStartMarker.remove();
+                prevEndMarker.remove();
+            }
 
-        Log.d(TAG, "onPostExecute: " + prevStartMarker + ", " + prevEndMarker);
+            Address startAdd = addresses.get(0);
+            Address endAdd = addresses.get(1);
+
+            LatLng startLL = new LatLng(startAdd.getLatitude()
+                    , startAdd.getLongitude());
+
+            LatLng endLL = new LatLng(endAdd.getLatitude()
+                    , endAdd.getLongitude());
+
+            //Todo
+            ParserTask parserTask = new ParserTask(addresses, map);
+            parserTask.execute();
+
+            //zooming
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(startLL, 10));
+
+            prevStartMarker = map.addMarker(new MarkerOptions().
+                    title(startAdd.getLocality())
+                    .snippet("Origin")
+                    .position(startLL));
+
+            prevEndMarker = map.addMarker(new MarkerOptions()
+                    .title(endAdd.getLocality())
+                    .snippet("Destination")
+                    .position(endLL)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+
+            Log.d(TAG, "start = " + startAdd.getLocality() + ", end = " + endAdd.getLocality());
+
+            Log.d(TAG, "onPostExecute: " + prevStartMarker + ", " + prevEndMarker);
 
       /*  map.addCircle(new CircleOptions()
                 .center(new LatLng(address.getLatitude(), address.getLongitude()))
@@ -123,12 +140,11 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
                 .strokeColor(Color.BLACK)
                 .strokeWidth(5));*/
 
-        map.addPolyline(new PolylineOptions()
-                .add(startLL)
-                .add(endLL)
-                .width(5)
-                .color(Color.BLACK)
-        );
+        } else {
+
+            Toast.makeText(context, "Check INTERNET CONNECTIVITY", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
 
@@ -141,5 +157,12 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
  * snippet("I'm here").
  * icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)).
  * draggable(true));
- * }
+ */
+/*
+ *   prevRoute = map.addPolyline(new PolylineOptions()
+                .add(startLL)
+                .add(endLL)
+                .width(5)
+                .color(Color.BLACK)
+        );
  */
