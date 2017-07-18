@@ -43,7 +43,10 @@ public class ParserTask extends AsyncTask<Void, Void, JSONObject> {
         this.map = map;
 
         if (prevRoute != null) {
+            Log.d(TAG, "REMOVING PARSER");
             prevRoute.remove();
+        }else{
+            Log.d(TAG, "NOT REMOVING THE PARSER");
         }
     }
 

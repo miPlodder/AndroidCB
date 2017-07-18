@@ -91,7 +91,7 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
         Log.d(TAG, "onPostExecute: After remove" + prevStartMarker + prevEndMarker);
         //animate is better than move camera as it moves from current location to the entered location
         //map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), 10));
-        
+
         if (addresses.size() != 0) {
 
 
@@ -105,13 +105,16 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
             Address startAdd = addresses.get(0);
             Address endAdd = addresses.get(1);
 
+            Log.d(TAG, "RITHALA "+ startAdd);
+            Log.d(TAG, "onPostExecute:"+ endAdd);
+
             LatLng startLL = new LatLng(startAdd.getLatitude()
                     , startAdd.getLongitude());
 
             LatLng endLL = new LatLng(endAdd.getLatitude()
                     , endAdd.getLongitude());
 
-            //Todo
+            //TODO
             ParserTask parserTask = new ParserTask(addresses, map);
             parserTask.execute();
 
@@ -119,12 +122,12 @@ public class FindLocationTask extends AsyncTask<String, Void, ArrayList<Address>
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(startLL, 10));
 
             prevStartMarker = map.addMarker(new MarkerOptions().
-                    title(startAdd.getLocality())
+                    title(startAdd.getFeatureName() + ", "+startAdd.getSubAdminArea())
                     .snippet("Origin")
                     .position(startLL));
 
             prevEndMarker = map.addMarker(new MarkerOptions()
-                    .title(endAdd.getLocality())
+                    .title(endAdd.getFeatureName() + ", "+endAdd.getSubAdminArea())
                     .snippet("Destination")
                     .position(endLL)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
