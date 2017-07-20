@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,19 +37,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         et = (EditText) findViewById(R.id.et);
         btn = (Button) findViewById(R.id.btn);
         lv = (ListView) findViewById(R.id.lv);
         tv = (TextView) findViewById(R.id.tv);
 
 
-        database = FirebaseDatabase.getInstance(); //gives the firebase database reference
-        Log.d(TAG, "database " + database);
+            database = FirebaseDatabase.getInstance(); //gives the firebase database reference
+            Log.d(TAG, "database " + database);
 
-        myRef = database.getReference("MSGS");
-        Log.d(TAG, "myRef " + myRef);
+            myRef = database.getReference("MSGS");
+            Log.d(TAG, "myRef " + myRef);
 
         //DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("MSGS");
 
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void populateView(View view, String s, int i) {
 
-                TextView tv = view.findViewById(android.R.id.text1);
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setText(s);
 
 
